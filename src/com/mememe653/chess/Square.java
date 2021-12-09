@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import com.mememe653.chess.pieces.Piece;
@@ -13,7 +12,8 @@ public class Square extends JPanel {
 	
 	public static final int WIDTH = Board.WIDTH / 8;
 	
-	private final Color color;
+	private boolean selected = false;
+	private Color color;
 	private Piece piece;
 	private final int row;
 	private final int col;
@@ -25,7 +25,9 @@ public class Square extends JPanel {
 	}
 	
 	public void paint(Graphics g) {
-		if (color.equals(Color.white)) {
+		if (selected) {
+			g.setColor(Color.orange);
+		} else if (color.equals(Color.white)) {
 			g.setColor(Color.lightGray);
 		} else if (color.equals(Color.black)) {
 			g.setColor(Color.darkGray);
@@ -40,5 +42,13 @@ public class Square extends JPanel {
 	
 	public void setPiece(Piece piece) {
 		this.piece = piece;
+	}
+	
+	public void setSelected() {
+		selected = true;
+	}
+	
+	public boolean getSelected() {
+		return selected;
 	}
 }

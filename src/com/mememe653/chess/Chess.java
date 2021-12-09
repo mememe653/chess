@@ -1,11 +1,7 @@
 package com.mememe653.chess;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
-import java.util.Arrays;
-import java.util.Collections;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,6 +9,9 @@ import javax.swing.JPanel;
 import com.mememe653.chess.Board.BoardNum;
 
 public class Chess extends JFrame {
+	
+	private final Board board1 = new Board(BoardNum.One);
+	private final Board board2 = new Board(BoardNum.Two);
 
 	public Chess() {
 		initUI();
@@ -22,9 +21,12 @@ public class Chess extends JFrame {
 		JPanel container = new JPanel();
 		
 		container.setLayout(new GridLayout(1, 2, 20, 20));
-		container.add(new Board(BoardNum.One));
-		container.add(new Board(BoardNum.Two));
+		container.add(board1);
+		container.add(board2);
 		add(container);
+		
+		board1.setMirrorBoard(board2);
+		board2.setMirrorBoard(board1);
 		
 		setResizable(false);
 		pack();
