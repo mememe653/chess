@@ -44,11 +44,23 @@ public class Square extends JPanel {
 		this.piece = piece;
 	}
 	
-	public void setSelected() {
-		selected = true;
+	public Piece getPiece() {
+		return piece;
+	}
+	
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 	
 	public boolean getSelected() {
 		return selected;
+	}
+	
+	public int getRow() {
+		return row;
+	}
+	
+	public int getCol() {
+		return col;
 	}
 }

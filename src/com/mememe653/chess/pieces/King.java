@@ -2,8 +2,13 @@ package com.mememe653.chess.pieces;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
+
+// TODO Remember, cannot move into check
+// Also, castling?
 
 public class King implements Piece {
 	
@@ -20,13 +25,13 @@ public class King implements Piece {
 	}
 
 	@Override
-	public int[][][] getThreatenedSquares(int row, int col) {
+	public List<ArrayList<int[]>> getThreatenedSquares(int row, int col) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int[][][] getCandidateMoves(int row, int col) {
+	public List<ArrayList<int[]>> getCandidateMoves(int row, int col) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,6 +39,11 @@ public class King implements Piece {
 	@Override
 	public Image getImage() {
 		return ii.getImage();
+	}
+
+	@Override
+	public Color getColor() {
+		return color;
 	}
 
 }
