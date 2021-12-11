@@ -329,6 +329,12 @@ public class Board extends JPanel {
 						mirrorBoard.getSquare(7 - y, 7 - x).setPiece(mirrorBoard.getSelectedSquare().getPiece());
 						mirrorBoard.getSelectedSquare().setPiece(null);
 						mirrorBoard.changeTurn();
+						if ((squares[y][x].getPiece() instanceof Pawn)) {
+							if (y == 0 || y == 7) {
+								squares[y][x].setPiece(new Queen(squares[y][x].getPiece().getColor()));
+								mirrorBoard.getSquare(7 - y, 7 - x).setPiece(new Queen(mirrorBoard.getSquare(7 - y, 7 - x).getPiece().getColor()));
+							}
+						}
 						break;
 					}
 				}
@@ -352,6 +358,12 @@ public class Board extends JPanel {
 						mirrorBoard.getSquare(7 - y, 7 - x).setPiece(mirrorBoard.getSelectedSquare().getPiece());
 						mirrorBoard.getSelectedSquare().setPiece(null);
 						mirrorBoard.changeTurn();
+						if ((squares[y][x].getPiece() instanceof Pawn)) {
+							if (y == 0 || y == 7) {
+								squares[y][x].setPiece(new Queen(squares[y][x].getPiece().getColor()));
+								mirrorBoard.getSquare(7 - y, 7 - x).setPiece(new Queen(mirrorBoard.getSquare(7 - y, 7 - x).getPiece().getColor()));
+							}
+						}
 						break;
 					}
 				}
