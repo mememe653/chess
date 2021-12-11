@@ -190,10 +190,17 @@ public class Board extends JPanel {
 				for (int candidateMove[] : candidateMoves) {
 					if (Arrays.equals(candidateMove, new int[] { y, x })) {
 						squares[y][x].setPiece(selectedSquare.getPiece());
-						mirrorBoard.getSquare(7 - y, 7 - x).setPiece(mirrorBoard.getSelectedSquare().getPiece());
 						selectedSquare.setPiece(null);
-						mirrorBoard.getSelectedSquare().setPiece(null);
 						changeTurn();
+						if (testForCheck()) {
+							// Revert
+							selectedSquare.setPiece(squares[y][x].getPiece());
+							squares[y][x].setPiece(null);
+							changeTurn();
+							break;
+						}
+						mirrorBoard.getSquare(7 - y, 7 - x).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSelectedSquare().setPiece(null);
 						mirrorBoard.changeTurn();
 						break;
 					}
@@ -204,11 +211,19 @@ public class Board extends JPanel {
 				List<int[]> threatenedSquares = clarifyThreatenedSquares(selectedSquare.getPiece().getThreatenedSquares(selectedSquare.getRow(), selectedSquare.getCol()));
 				for (int threatenedSquare[] : threatenedSquares) {
 					if (Arrays.equals(threatenedSquare, new int[] { y, x })) {
+						Piece takenPiece = squares[y][x].getPiece();
 						squares[y][x].setPiece(selectedSquare.getPiece());
-						mirrorBoard.getSquare(7 - y, 7 - x).setPiece(mirrorBoard.getSelectedSquare().getPiece());
 						selectedSquare.setPiece(null);
-						mirrorBoard.getSelectedSquare().setPiece(null);
 						changeTurn();
+						if (testForCheck()) {
+							// Revert
+							selectedSquare.setPiece(squares[y][x].getPiece());
+							squares[y][x].setPiece(takenPiece);
+							changeTurn();
+							break;
+						}
+						mirrorBoard.getSquare(7 - y, 7 - x).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSelectedSquare().setPiece(null);
 						mirrorBoard.changeTurn();
 						break;
 					}
@@ -248,6 +263,31 @@ public class Board extends JPanel {
 				}
 			}
 			return boundedCandidateMoves;
+		}
+		
+		private boolean testForCheck() {
+			Color opponentColor = turn.equals(Color.white) ? Color.black : Color.white;
+			
+			List<int[]> threatenedSquares = new ArrayList<>();
+			int[] kingCoords = new int[2];
+			for (int i = 0; i < 8; i++) {
+				for (int j = 0; j < 8; j++) {
+					if (squares[i][j].getPiece() != null && squares[i][j].getPiece().getColor().equals(turn)) {
+						threatenedSquares.addAll(clarifyThreatenedSquares(squares[i][j].getPiece().getThreatenedSquares(i, j)));
+					} else if (squares[i][j].getPiece() != null && 
+							squares[i][j].getPiece().getColor().equals(opponentColor) &&
+							squares[i][j].getPiece() instanceof King) {
+						kingCoords = new int[] { i, j };
+					}
+				}
+			}
+			
+			for (int threatenedSquare[] : threatenedSquares) {
+				if (Arrays.equals(threatenedSquare, kingCoords)) {
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 }
