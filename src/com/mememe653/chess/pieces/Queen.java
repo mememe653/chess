@@ -115,4 +115,9 @@ public class Queen implements Piece {
 		return color;
 	}
 
+	@Override
+	public void move() {
+		// Do nothing
+	}
+
 }

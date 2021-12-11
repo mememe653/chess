@@ -103,4 +103,9 @@ public class Pawn implements Piece {
 		return color;
 	}
 
+	@Override
+	public void move() {
+		hasMoved = true;
+	}
+
 }

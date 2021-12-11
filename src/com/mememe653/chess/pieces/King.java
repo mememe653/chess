@@ -7,9 +7,6 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-// TODO Remember, cannot move into check
-// Also, castling?
-
 public class King implements Piece {
 	
 	private final Color color;
@@ -91,6 +88,11 @@ public class King implements Piece {
 	@Override
 	public Color getColor() {
 		return color;
+	}
+
+	@Override
+	public void move() {
+		hasMoved = true;
 	}
 
 }

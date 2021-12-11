@@ -83,4 +83,9 @@ public class Bishop implements Piece {
 		return color;
 	}
 
+	@Override
+	public void move() {
+		// Do nothing
+	}
+
 }

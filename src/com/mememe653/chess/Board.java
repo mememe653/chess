@@ -185,6 +185,133 @@ public class Board extends JPanel {
 			if (squares[y][x].getPiece() != null && squares[y][x].getPiece().getColor().equals(turn)) {
 				setSelectedSquare(y, x);
 				mirrorBoard.setSelectedSquare(7 - y, 7 - x);
+			} else if (selectedSquare != null && canCastle(y, x)) {
+				switch (y) {
+				case 0:
+					switch (x) {
+					case 1:
+						squares[0][1].setPiece(selectedSquare.getPiece());
+						squares[0][1].getPiece().move();
+						squares[0][3].setPiece(null);
+						squares[0][2].setPiece(squares[0][0].getPiece());
+						squares[0][2].getPiece().move();
+						squares[0][0].setPiece(null);
+						mirrorBoard.getSquare(7, 6).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(7, 6).getPiece().move();
+						mirrorBoard.getSquare(7, 4).setPiece(null);
+						mirrorBoard.getSquare(7, 5).setPiece(mirrorBoard.getSquare(7, 7).getPiece());
+						mirrorBoard.getSquare(7, 5).getPiece().move();
+						mirrorBoard.getSquare(7, 7).setPiece(null);
+						break;
+					case 2:
+						squares[0][2].setPiece(selectedSquare.getPiece());
+						squares[0][2].getPiece().move();
+						squares[0][4].setPiece(null);
+						squares[0][3].setPiece(squares[0][0].getPiece());
+						squares[0][3].getPiece().move();
+						squares[0][0].setPiece(null);
+						mirrorBoard.getSquare(7, 5).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(7, 5).getPiece().move();
+						mirrorBoard.getSquare(7, 3).setPiece(null);
+						mirrorBoard.getSquare(7, 4).setPiece(mirrorBoard.getSquare(7, 7).getPiece());
+						mirrorBoard.getSquare(7, 4).getPiece().move();
+						mirrorBoard.getSquare(7, 7).setPiece(null);
+						break;
+					case 5:
+						squares[0][5].setPiece(selectedSquare.getPiece());
+						squares[0][5].getPiece().move();
+						squares[0][3].setPiece(null);
+						squares[0][4].setPiece(squares[0][7].getPiece());
+						squares[0][4].getPiece().move();
+						squares[0][7].setPiece(null);
+						mirrorBoard.getSquare(7, 2).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(7, 2).getPiece().move();
+						mirrorBoard.getSquare(7, 4).setPiece(null);
+						mirrorBoard.getSquare(7, 3).setPiece(mirrorBoard.getSquare(7, 0).getPiece());
+						mirrorBoard.getSquare(7, 3).getPiece().move();
+						mirrorBoard.getSquare(7, 0).setPiece(null);
+						break;
+					case 6:
+						squares[0][6].setPiece(selectedSquare.getPiece());
+						squares[0][6].getPiece().move();
+						squares[0][4].setPiece(null);
+						squares[0][5].setPiece(squares[0][7].getPiece());
+						squares[0][5].getPiece().move();
+						squares[0][7].setPiece(null);
+						mirrorBoard.getSquare(7, 1).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(7, 1).getPiece().move();
+						mirrorBoard.getSquare(7, 3).setPiece(null);
+						mirrorBoard.getSquare(7, 2).setPiece(mirrorBoard.getSquare(7, 0).getPiece());
+						mirrorBoard.getSquare(7, 2).getPiece().move();
+						mirrorBoard.getSquare(7, 0).setPiece(null);
+						break;
+					}
+					break;
+				case 7:
+					switch (x) {
+					case 1:
+						squares[7][1].setPiece(selectedSquare.getPiece());
+						squares[7][1].getPiece().move();
+						squares[7][3].setPiece(null);
+						squares[7][2].setPiece(squares[7][0].getPiece());
+						squares[7][2].getPiece().move();
+						squares[7][0].setPiece(null);
+						mirrorBoard.getSquare(0, 6).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(0, 6).getPiece().move();
+						mirrorBoard.getSquare(0, 4).setPiece(null);
+						mirrorBoard.getSquare(0, 5).setPiece(mirrorBoard.getSquare(0, 7).getPiece());
+						mirrorBoard.getSquare(0, 5).getPiece().move();
+						mirrorBoard.getSquare(0, 7).setPiece(null);
+						break;
+					case 2:
+						squares[7][2].setPiece(selectedSquare.getPiece());
+						squares[7][2].getPiece().move();
+						squares[7][4].setPiece(null);
+						squares[7][3].setPiece(squares[7][0].getPiece());
+						squares[7][3].getPiece().move();
+						squares[7][0].setPiece(null);
+						mirrorBoard.getSquare(0, 5).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(0, 5).getPiece().move();
+						mirrorBoard.getSquare(0, 3).setPiece(null);
+						mirrorBoard.getSquare(0, 4).setPiece(mirrorBoard.getSquare(0, 7).getPiece());
+						mirrorBoard.getSquare(0, 4).getPiece().move();
+						mirrorBoard.getSquare(0, 7).setPiece(null);
+						break;
+					case 5:
+						squares[7][5].setPiece(selectedSquare.getPiece());
+						squares[7][5].getPiece().move();
+						squares[7][3].setPiece(null);
+						squares[7][4].setPiece(squares[7][7].getPiece());
+						squares[7][4].getPiece().move();
+						squares[7][7].setPiece(null);
+						mirrorBoard.getSquare(0, 2).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(0, 2).getPiece().move();
+						mirrorBoard.getSquare(0, 4).setPiece(null);
+						mirrorBoard.getSquare(0, 3).setPiece(mirrorBoard.getSquare(0, 0).getPiece());
+						mirrorBoard.getSquare(0, 3).getPiece().move();
+						mirrorBoard.getSquare(0, 0).setPiece(null);
+						break;
+					case 6:
+						squares[7][6].setPiece(selectedSquare.getPiece());
+						squares[7][6].getPiece().move();
+						squares[7][4].setPiece(null);
+						squares[7][5].setPiece(squares[7][7].getPiece());
+						squares[7][5].getPiece().move();
+						squares[7][7].setPiece(null);
+						mirrorBoard.getSquare(0, 1).setPiece(mirrorBoard.getSelectedSquare().getPiece());
+						mirrorBoard.getSquare(0, 1).getPiece().move();
+						mirrorBoard.getSquare(0, 3).setPiece(null);
+						mirrorBoard.getSquare(0, 2).setPiece(mirrorBoard.getSquare(0, 0).getPiece());
+						mirrorBoard.getSquare(0, 2).getPiece().move();
+						mirrorBoard.getSquare(0, 0).setPiece(null);
+						break;
+					}
+					break;
+				}
+				changeTurn();
+				mirrorBoard.changeTurn();
+				setSelectedSquare(null);
+				mirrorBoard.setSelectedSquare(null);
 			} else if (selectedSquare != null && squares[y][x].getPiece() == null) {
 				List<int[]> candidateMoves = clarifyCandidateMoves(selectedSquare.getPiece().getCandidateMoves(selectedSquare.getRow(), selectedSquare.getCol()));
 				for (int candidateMove[] : candidateMoves) {
@@ -285,6 +412,236 @@ public class Board extends JPanel {
 			for (int threatenedSquare[] : threatenedSquares) {
 				if (Arrays.equals(threatenedSquare, kingCoords)) {
 					return true;
+				}
+			}
+			return false;
+		}
+		
+		private boolean canCastle(int row, int col) {
+			boolean canCastle = true;
+			if (selectedSquare.getPiece() instanceof King) {
+				King king = (King) selectedSquare.getPiece();
+				
+				if (selectedSquare.getRow() == 7 && selectedSquare.getCol() == 4) {
+					if (row == 7 && col == 2) {
+						if (!(squares[7][0].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[7][0].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[7][1].getPiece() == null;
+						canCastle = canCastle && squares[7][2].getPiece() == null;
+						canCastle = canCastle && squares[7][3].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 3; i > 1; i--) {
+								squares[7][i].setPiece(king);
+								squares[7][i+1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[7][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+							changeTurn();
+							selectedSquare.setPiece(king);
+							squares[7][2].setPiece(null);
+							return true;
+						}
+					} else if (row == 7 && col == 6) {
+						if (!(squares[7][7].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[7][7].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[7][5].getPiece() == null;
+						canCastle = canCastle && squares[7][6].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 5; i < 7; i++) {
+								squares[7][i].setPiece(king);
+								squares[7][i-1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[7][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+							changeTurn();
+							selectedSquare.setPiece(king);
+							squares[7][6].setPiece(null);
+							return true;
+						}
+					}
+				} else if (selectedSquare.getRow() == 7 && selectedSquare.getCol() == 3) {
+					if (row == 7 && col == 1) {
+						if (!(squares[7][0].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[7][0].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[7][1].getPiece() == null;
+						canCastle = canCastle && squares[7][2].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 2; i > 0; i--) {
+								squares[7][i].setPiece(king);
+								squares[7][i+1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[7][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+						}
+						changeTurn();
+						selectedSquare.setPiece(king);
+						squares[7][1].setPiece(null);
+						return true;
+					} else if (row == 7 && col == 5) {
+						if (!(squares[7][7].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[7][7].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[7][4].getPiece() == null;
+						canCastle = canCastle && squares[7][5].getPiece() == null;
+						canCastle = canCastle && squares[7][6].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 4; i < 7; i++) {
+								squares[7][i].setPiece(king);
+								squares[7][i-1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[7][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+						}
+						changeTurn();
+						selectedSquare.setPiece(king);
+						squares[7][6].setPiece(null);
+						return true;
+					}
+				} else if (selectedSquare.getRow() == 0 && selectedSquare.getCol() == 4) {
+					if (row == 0 && col == 2) {
+						if (!(squares[0][0].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[0][0].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[0][1].getPiece() == null;
+						canCastle = canCastle && squares[0][2].getPiece() == null;
+						canCastle = canCastle && squares[0][3].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 3; i > 1; i--) {
+								squares[0][i].setPiece(king);
+								squares[0][i+1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[0][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+						}
+						changeTurn();
+						selectedSquare.setPiece(king);
+						squares[0][2].setPiece(null);
+						return true;
+					} else if (row == 0 && col == 6) {
+						if (!(squares[0][7].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[0][7].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[0][5].getPiece() == null;
+						canCastle = canCastle && squares[0][6].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 5; i < 7; i++) {
+								squares[0][i].setPiece(king);
+								squares[0][i-1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[0][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+						}
+						changeTurn();
+						selectedSquare.setPiece(king);
+						squares[0][6].setPiece(null);
+						return true;
+					}
+				} else if (selectedSquare.getRow() == 0 && selectedSquare.getCol() == 3) {
+					if (row == 0 && col == 1) {
+						if (!(squares[0][0].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[0][0].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[0][1].getPiece() == null;
+						canCastle = canCastle && squares[0][2].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 2; i > 0; i--) {
+								squares[0][i].setPiece(king);
+								squares[0][i+1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[0][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+						}
+						changeTurn();
+						selectedSquare.setPiece(king);
+						squares[0][1].setPiece(null);
+						return true;
+					} else if (row == 0 && col == 5) {
+						if (!(squares[0][7].getPiece() instanceof Rook)) {
+							return false;
+						}
+						Rook rook = (Rook) (squares[0][7].getPiece());
+						canCastle = canCastle && !king.hasMoved();
+						canCastle = canCastle && !rook.hasMoved();
+						canCastle = canCastle && squares[0][4].getPiece() == null;
+						canCastle = canCastle && squares[0][5].getPiece() == null;
+						canCastle = canCastle && squares[0][6].getPiece() == null;
+						if (canCastle) {
+							changeTurn();
+							for (int i = 4; i < 7; i++) {
+								squares[0][i].setPiece(king);
+								squares[0][i-1].setPiece(null);
+								if (testForCheck()) {
+									selectedSquare.setPiece(king);
+									squares[0][i] = null;
+									changeTurn();
+									return false;
+								}
+							}
+						}
+						changeTurn();
+						selectedSquare.setPiece(king);
+						squares[0][6].setPiece(null);
+						return true;
+					}
 				}
 			}
 			return false;

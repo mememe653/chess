@@ -81,4 +81,9 @@ public class Rook implements Piece {
 		return color;
 	}
 
+	@Override
+	public void move() {
+		hasMoved = true;
+	}
+
 }

@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface Piece {
 
-	Image getImage();
-	Color getColor();
-	List<ArrayList<int[]>> getThreatenedSquares(int row, int col);
-	List<ArrayList<int[]>> getCandidateMoves(int row, int col);
+	public Image getImage();
+	public Color getColor();
+	public List<ArrayList<int[]>> getThreatenedSquares(int row, int col);
+	public List<ArrayList<int[]>> getCandidateMoves(int row, int col);
+	public void move();
+	
 }
