@@ -15,6 +15,8 @@ public class King implements Piece {
 	private final Color color;
 	private final ImageIcon ii;
 	
+	private boolean hasMoved = false;
+	
 	public King(Color color) {
 		this.color = color;
 		if (color.equals(Color.white)) {
@@ -23,17 +25,62 @@ public class King implements Piece {
 			ii = new ImageIcon("src/resources/Black King.png");
 		}
 	}
+	
+	public boolean hasMoved() {
+		return hasMoved;
+	}
 
 	@Override
 	public List<ArrayList<int[]>> getThreatenedSquares(int row, int col) {
-		// TODO Auto-generated method stub
-		return null;
+		List<ArrayList<int[]>> returnList = new ArrayList<>();
+		
+		if (row > 0 && col > 0) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row - 1, col - 1 });
+			returnList.add(threatenedSquares);
+		}
+		if (row > 0) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row - 1, col });
+			returnList.add(threatenedSquares);
+		}
+		if (row > 0 && col < 7) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row - 1, col + 1 });
+			returnList.add(threatenedSquares);
+		}
+		if (col < 7) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row, col + 1 });
+			returnList.add(threatenedSquares);
+		}
+		if (row < 7 && col < 7) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row + 1, col + 1 });
+			returnList.add(threatenedSquares);
+		}
+		if (row < 7) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row + 1, col });
+			returnList.add(threatenedSquares);
+		}
+		if (row < 7 && col > 0) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row + 1, col - 1 });
+			returnList.add(threatenedSquares);
+		}
+		if (col > 0) {
+			ArrayList<int[]> threatenedSquares = new ArrayList<>();
+			threatenedSquares.add(new int[] { row, col - 1 });
+			returnList.add(threatenedSquares);
+		}
+		
+		return returnList;
 	}
 
 	@Override
 	public List<ArrayList<int[]>> getCandidateMoves(int row, int col) {
-		// TODO Auto-generated method stub
-		return null;
+		return getThreatenedSquares(row, col);
 	}
 
 	@Override

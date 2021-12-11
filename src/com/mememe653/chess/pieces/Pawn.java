@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 // Could have move() function for each piece which is generally
 // not implemented except by pawn, or maybe pawn should not inherit
 // from piece.
+// Also, pawn promotion, and en passant.
 
 public class Pawn implements Piece {
 	
@@ -33,6 +34,10 @@ public class Pawn implements Piece {
 		} else {
 			ii = new ImageIcon("src/resources/Black Pawn.png");
 		}
+	}
+	
+	public boolean hasMoved() {
+		return hasMoved;
 	}
 
 	@Override

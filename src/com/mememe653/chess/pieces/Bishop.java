@@ -28,7 +28,7 @@ public class Bishop implements Piece {
 		ArrayList<int[]> threatenedSquares = new ArrayList<>();
 		int i = row;
 		int j = col;
-		while (i >= 0 && i < 8 && j >= 0 && j < 8) {
+		while (i > 0 && j > 0) {
 			i--;
 			j--;
 			threatenedSquares.add(new int[] { i, j });
@@ -38,7 +38,7 @@ public class Bishop implements Piece {
 		threatenedSquares = new ArrayList<>();
 		i = row;
 		j = col;
-		while (i >= 0 && i < 8 && j >= 0 && j < 8) {
+		while (i < 7 && j < 7) {
 			i++;
 			j++;
 			threatenedSquares.add(new int[] { i, j });
@@ -48,7 +48,7 @@ public class Bishop implements Piece {
 		threatenedSquares = new ArrayList<>();
 		i = row;
 		j = col;
-		while (i >= 0 && i < 8 && j >= 0 && j < 8) {
+		while (i > 0 && j < 7) {
 			i--;
 			j++;
 			threatenedSquares.add(new int[] { i, j });
@@ -58,7 +58,7 @@ public class Bishop implements Piece {
 		threatenedSquares = new ArrayList<>();
 		i = row;
 		j = col;
-		while (i >= 0 && i < 8 && j >= 0 && j < 8) {
+		while (i < 7 && j > 0) {
 			i++;
 			j--;
 			threatenedSquares.add(new int[] { i, j });
